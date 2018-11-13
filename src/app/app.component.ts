@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { JsonConvererServiceService } from './services/json-converer-service.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'edn-json-converter';
+
+
+  constructor(private jsonConvererServiceService: JsonConvererServiceService) {
+
+  }
+
+  json: string; //Output
+  edn: string; //Input
+  convertToJson() {
+
+    this.jsonConvererServiceService.convertToJson(this.edn).subscribe(
+      jsonResult => {
+        this.json = jsonResult;
+      }
+    );
+  }
 }
