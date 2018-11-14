@@ -10,10 +10,10 @@ export class JsonConvererServiceService {
   constructor(private http: HttpClient) { }
 
 
-  convertToJson(edn: string): Observable<string> {
+  convertToJson(edn: any): Observable<string> {
     const url = 'https://intense-taiga-15334.herokuapp.com/toJson';
-    const body = { 'edn': edn };
-    return this.http.post<string>(url, body);
+    const data = new FormData();
+    data.append('edn', edn);
+    return this.http.post<string>(url, data);
   }
-
 }

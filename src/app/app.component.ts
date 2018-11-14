@@ -10,11 +10,10 @@ export class AppComponent {
 
 
   constructor(private jsonConvererServiceService: JsonConvererServiceService) {
-
   }
 
   json: string; //Output
-  edn: string; //Input
+  edn: any = '{:fname "Mostafa" :lname "Khodeir"}'; //Input
 
 
   convertToJson() {
