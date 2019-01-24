@@ -1,11 +1,15 @@
 <div class="row">
+    <ngx-loading-bar color="#da1f26"></ngx-loading-bar>
     <div class="column left">
-        <ace-editor [(text)]="edn" style="height:1000px"></ace-editor>
+        <ace-editor theme="monokai" mode="json" [options]="options" #editor style=" min-height: 1000px; width:100%;overflow: auto;"
+            [(text)]="edn"></ace-editor>
     </div>
     <div class="column middle">
         <button (click)="convertToJson()"> Convert</button>
+        <!-- <button (click)="beautify()"> Beautify</button> -->
     </div>
+
     <div class="column right">
-        <ngx-json-viewer *ngIf="json" [json]="json"></ngx-json-viewer>
+        <ngx-json-viewer *ngIf="json" [expanded]="false" [json]="json"></ngx-json-viewer>
     </div>
 </div>
